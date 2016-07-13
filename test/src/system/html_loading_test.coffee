@@ -33,6 +33,21 @@ testGroup "HTML loading", ->
       assert.textAttributes([0, 1], bold: true)
       expectDocument("a\n")
 
+  testGroup "underline elements", template: "editor_with_underline_styles", ->
+    test "<cite> with underline decoration", (expectDocument) ->
+      getEditor().loadHTML("<cite>a</cite>")
+      assert.textAttributes([0, 1], underline: true)
+      expectDocument("a\n")
+    test "<mark> with underline & overline decoration", (expectDocument) ->
+      getEditor().loadHTML("<mark>a</mark>")
+      assert.textAttributes([0, 1], underline: true)
+      expectDocument("a\n")
+    test "ignore <a> with underline decoration", (expectDocument) ->
+      getEditor().loadHTML("<a>a<u>b</u></a>")
+      assert.textAttributes([0, 1], {})
+      assert.textAttributes([1, 2], underline: true)
+      expectDocument("ab\n")
+
   testGroup "styled block elements", template: "editor_with_block_styles", ->
     test "<em> in <blockquote> with font-style: italic", (expectDocument) ->
       getEditor().loadHTML("<blockquote>a<em>b</em></blockquote>")

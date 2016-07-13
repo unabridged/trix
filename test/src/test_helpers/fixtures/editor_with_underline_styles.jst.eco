@@ -1,0 +1,6 @@
+<style type="text/css">
+  cite { text-decoration: underline; font-style: normal; }
+  mark { text-decoration: underline overline; }
+</style>
+
+<trix-editor class="trix-content"></trix-editor>
