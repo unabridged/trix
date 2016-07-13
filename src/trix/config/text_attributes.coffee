@@ -17,7 +17,7 @@ Trix.config.textAttributes =
     parser: (element) ->
       return false if element.tagName is "A"
       style = window.getComputedStyle(element)
-      style["textDecoration"].match("underline")
+      /underline/.test style["textDecoration"]
   href:
     groupTagName: "a"
     parser: (element) ->
